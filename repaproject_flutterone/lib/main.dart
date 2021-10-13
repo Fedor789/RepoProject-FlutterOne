@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    home: MyHomePage(),
+      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     ); // MaterialApp
   }
 }
@@ -25,8 +26,22 @@ class MyHomePage extends StatefulWidget {
 class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Text("привет"),
-    ); //Scaffold
+        body: SafeArea(
+            child: Container(
+                width: size.width * 0.5,
+                height: size.height,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 100.0,
+                        height: 50.0,
+                        color: Colors.blueAccent,
+                        child: Text("Привет"),
+                      )
+                    ]))));
   }
 }
